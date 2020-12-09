@@ -1,0 +1,29 @@
+{
+  "name": "discordchatbot.json",
+  "version": "1.0.1",
+  "description": "Way more simple way to make your discord bot respond with simple replies to specific inputs.",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tyson3101/discord.json.git"
+  },
+  "keywords": [
+    "discord.js",
+    "chatbot"
+  ],
+  "author": "Tyson3101",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tyson3101/discord.json/issues"
+  },
+  "homepage": "https://github.com/Tyson3101/discord.json#readme",
+  "devDependencies": {
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "@types/node": "^14.14.11"
+  }
+}
