@@ -10,7 +10,7 @@
 
 ##### Note: Can use object instead of JSON File.
 
-### Firstly install the module
+### Firstly install the package
 
 ```
 npm i easycommands.json
