@@ -6,9 +6,9 @@
 
 ## Example
 
-##### Note: Init refers to how you defined the easycommands.json module.
+##### Note: init refers to how you defined the easycommands.json module, which is what the example shows.
 
-### First import the easycommands.json module
+### Firstly import the easycommands.json module
 
 ```js
 // ES6 || TypeScript
@@ -72,7 +72,7 @@ init(client /* Client Object */, {
 
   reply: false, // Use message.reply if true for responding to commands. DEFAULT: FALSE
 }); // Returns passed Client object
-/* Note: Init Function Adds commandsJSON property to client, value being the parsed JSON file. */
+/* Note: init Function Adds commandsJSON property to client, value being the parsed JSON file. */
 ```
 
 ## Example Code Inside Message Event
@@ -98,6 +98,6 @@ client.on("message", (msg) => {
 
     message: msg, // Message object to access the content, etc properties. REQURIED
   }); // Returns Message Object Of Reply || Passed Client
-  /* Note: Init Function Adds commandsJSON property to client, value being the parsed JSON file. */
+  /* Note: init Function Adds commandsJSON property to client, value being the parsed JSON file. */
 });
 ```
