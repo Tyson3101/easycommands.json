@@ -61,8 +61,11 @@ function init(client: Client, options: Options) {
       if (prefix && objOfCommands["prefix"]) {
         const command = objOfCommands["prefix"].find(({ input: inputs }) => {
           if (Array.isArray(inputs))
-            return inputs.some((input) => message.content.includes(input));
-          else return message.content.includes(inputs);
+            return inputs.some((input) =>
+              message.content.toLowerCase().includes(input.toLowerCase())
+            );
+          else
+            return message.content.toLowerCase().includes(inputs.toLowerCase());
         });
         if (command) {
           found = true;
@@ -86,8 +89,11 @@ function init(client: Client, options: Options) {
       }
       const command = objOfCommands["noPrefix"].find(({ input: inputs }) => {
         if (Array.isArray(inputs))
-          return inputs.some((input) => message.content.includes(input));
-        else return message.content.includes(inputs);
+          return inputs.some((input) =>
+            message.content.toLowerCase().includes(input.toLowerCase())
+          );
+        else
+          return message.content.toLowerCase().includes(inputs.toLowerCase());
       });
       if (command && !found) {
         const output = command.output;
