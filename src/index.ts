@@ -33,17 +33,17 @@ function init(client: Client, options: Options) {
     throw new TypeError(
       `[Invaild Path]: Path provied either isn't a json file or doesn't excist.\nPath: ${path}`
     );
-  const objOfCommands: JSONFile = JSON.parse(
-    fs.readFileSync(
-      `${path.endsWith(".json") ? path : path + ".json"}`,
-      "utf-8"
-    )
-  );
-  if (!objOfCommands)
-    throw new TypeError(
-      `[Invaild Path]: Path provied either isn't a json file or doesn't excist.\nPath: ${path}`
-    );
   try {
+    const objOfCommands: JSONFile = JSON.parse(
+      fs.readFileSync(
+        `${path.endsWith(".json") ? path : path + ".json"}`,
+        "utf-8"
+      )
+    );
+    if (!objOfCommands)
+      throw new TypeError(
+        `[Invaild Path]: Path provied either isn't a json file or doesn't excist.\nPath: ${path}`
+      );
     if (options.logOnReady && !options.message) {
       client.on("ready", () =>
         console.log(
@@ -74,7 +74,7 @@ function init(client: Client, options: Options) {
                   command.messageOptions
                 )
               : message.channel.send(
-                  [Math.floor(Math.random() * output.length)],
+                  output[Math.floor(Math.random() * output.length)],
                   command.messageOptions
                 );
           } else {
@@ -98,7 +98,7 @@ function init(client: Client, options: Options) {
                 command.messageOptions
               )
             : message.channel.send(
-                [Math.floor(Math.random() * output.length)],
+                output[Math.floor(Math.random() * output.length)],
                 command.messageOptions
               );
         } else {

@@ -35,9 +35,10 @@ const init = require("easycommands.json");
 {
   "prefix": [{
     "input": "rules", // Input to listen for. REQUIRED (If array, elements acts as aliases)
-    "output": "**1.** No being rude.\n**2.** No Ads" // Output to respond. REQUIRED (If array gets random element)
+    "output": "**1.** No being rude.\n**2.** No Ads", // Output to respond. REQUIRED (If array gets random element)
     "messageOptions": { // Discord MessageOptions. OPTIONAL
       split: true,
+      embed: { title: "Check Rules Above!"} // Embed Object https://discordjs.guide/popular-topics/embeds.html#using-an-embed-object
     },
   }],
   "noPrefix": [{
