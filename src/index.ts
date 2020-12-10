@@ -1,4 +1,4 @@
-import { Client, Message } from "discord.js";
+import { Client, Message, MessageOptions } from "discord.js";
 import * as fs from "fs";
 
 interface Options {
@@ -12,6 +12,7 @@ interface Options {
 interface Command {
   input: string | string[];
   output: string | string[];
+  messageOptions: MessageOptions;
 }
 
 interface JSONFile {
@@ -68,14 +69,18 @@ function init(client: Client, options: Options) {
           const output = command.output;
           if (Array.isArray(output)) {
             options.reply
-              ? message.reply(output[Math.floor(Math.random() * output.length)])
-              : message.channel.send([
-                  Math.floor(Math.random() * output.length),
-                ]);
+              ? message.reply(
+                  output[Math.floor(Math.random() * output.length)],
+                  command.messageOptions
+                )
+              : message.channel.send(
+                  [Math.floor(Math.random() * output.length)],
+                  command.messageOptions
+                );
           } else {
             options.reply
-              ? message.reply(command.output)
-              : message.channel.send(command.output);
+              ? message.reply(command.output, command.messageOptions)
+              : message.channel.send(command.output, command.messageOptions);
           }
         }
       }
@@ -88,12 +93,18 @@ function init(client: Client, options: Options) {
         const output = command.output;
         if (Array.isArray(output)) {
           options.reply
-            ? message.reply(output[Math.floor(Math.random() * output.length)])
-            : message.channel.send([Math.floor(Math.random() * output.length)]);
+            ? message.reply(
+                output[Math.floor(Math.random() * output.length)],
+                command.messageOptions
+              )
+            : message.channel.send(
+                [Math.floor(Math.random() * output.length)],
+                command.messageOptions
+              );
         } else {
           options.reply
-            ? message.reply(command.output)
-            : message.channel.send(command.output);
+            ? message.reply(command.output, command.messageOptions)
+            : message.channel.send(command.output, command.messageOptions);
         }
       }
     }
