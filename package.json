@@ -1,7 +1,7 @@
 {
-  "name": "discordchatbot.json",
-  "version": "1.0.1",
-  "description": "Way more simple way to make your discord bot respond with simple replies to specific inputs.",
+  "name": "easycommands.json",
+  "version": "1.0.0",
+  "description": "Easy way to make commands by using a JSON file with input and output key value pairs instead of a lot of if statements or switch cases that fill up your code by an unnecessary amount.",
   "main": "./lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,6 +24,8 @@
     "typescript": "^4.1.2"
   },
   "dependencies": {
-    "@types/node": "^14.14.11"
+    "@types/node": "^14.14.11",
+    "@types/ws": "^7.4.0",
+    "discord.js": "^12.5.1"
   }
 }
