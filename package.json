@@ -1,6 +1,6 @@
 {
   "name": "easycommands.json",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Easy way to make commands by using a JSON file with input and output key value pairs instead of a lot of if statements or switch cases that fill up your code by an unnecessary amount.",
   "main": "./lib/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tyson3101/discord.json.git"
+    "url": "git+https://github.com/Tyson3101/easycommands.json.git"
   },
   "keywords": [
     "discord.js",
@@ -17,9 +17,9 @@
   "author": "Tyson3101",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Tyson3101/discord.json/issues"
+    "url": "https://github.com/Tyson3101/easycommands.json/issues"
   },
-  "homepage": "https://github.com/Tyson3101/discord.json#readme",
+  "homepage": "https://github.com/Tyson3101/easycommands.json#readme",
   "devDependencies": {
     "typescript": "^4.1.2"
   },
