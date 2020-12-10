@@ -60,7 +60,7 @@ const init = require("easycommands.json");
       "split": true,
       "respondToSelf": false, // Custom Property which tells to respond to self or not. DEFUALT: FALSE
       "respondToBots": true, // Custom Property which tells to respond to other bots or not. DEFUALT: TRUE
-      "respondToUsers": true, // Custom Property which tells to respond to other users or bot. DEFUALT: TRUE
+      "respondToUsers": true, // Custom Property which tells to respond to other users. DEFUALT: TRUE
       "equalContent": false, // Custom Proerty which says to exacly equal input, or just include input. DEFAULT: TRUE
       "embed": { "title": "Check Rules Above!" } // Embed Object https://discordjs.guide/popular-topics/embeds.html#using-an-embed-object
     },
@@ -146,7 +146,7 @@ const Commands = { // Follows same format as JSON.
       split: true,
       respondToSelf: false, // Custom Property which tells to respond to self or not. DEFUALT: FALSE
       respondToBots: true, // Custom Property which tells to respond to other bots or not. DEFUALT: TRUE
-      respondToUsers: true, // Custom Property which tells to respond to other users or bot. DEFUALT: TRUE
+      respondToUsers: true, // Custom Property which tells to respond to other users. DEFUALT: TRUE
       equalContent: false, // Custom Proerty which says to exacly equal input, or just include input. DEFAULT: TRUE
       embed: new MessageEmbed().setTitle("Check Rules above") // Messagembed Constructor https://discordjs.guide/popular-topics/embeds.html#using-the-richembedmessageembed-constructor
     },
