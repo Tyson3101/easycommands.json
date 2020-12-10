@@ -12,7 +12,7 @@
 
 ### Firstly install the module
 
-```js
+```
 npm i easycommands.json
 ```
 
