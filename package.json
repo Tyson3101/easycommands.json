@@ -1,6 +1,6 @@
 {
   "name": "easycommands.json",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Easy way to make commands by using a JSON file with input and output key value pairs instead of a lot of if statements or switch cases that fill up your code by an unnecessary amount.",
   "main": "./lib/index.js",
   "scripts": {
