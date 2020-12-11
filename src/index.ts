@@ -1,7 +1,5 @@
 import { Client, Message, MessageOptions } from "discord.js";
 import * as fs from "fs";
-import { type } from "os";
-
 export interface initOptions {
   command: string | CommandObject | Array<string | CommandObject>;
   logOnReady?: string | boolean;
@@ -33,18 +31,16 @@ declare module "discord.js" {
   }
 }
 
-function init(client: Client, options: initOptions) {
+function init(client: Client, options: initOptions): Client {
   const path = options.command;
   const prefix = options.prefix;
   if (!["string", "object"].includes(typeof path))
-    throw new TypeError(
-      `[Invaild Path]: Path provied either isn't a json file or doesn't excist.\nPath: ${path}`
-    );
+    throw new TypeError(`initOptions.command must be type Object or String.`);
   try {
     let objOfCommands: CommandObject = getCommandObj(options);
-    if (!objOfCommands)
+    if (!objOfCommands.prefix?.length && !objOfCommands.noPrefix?.length)
       throw new TypeError(
-        `[Invaild Path|Object]: Path provied either isn't a json file or doesn't excist. Or object doesn't have correct properties.`
+        `[Invaild Path|Object]: Path provied either isn't a json file or doesn't exist.\nOr the Object provieded do not have the correct properties.`
       );
     if (options.logOnReady && !options.message) {
       client.on("ready", () =>
@@ -217,6 +213,8 @@ function init(client: Client, options: initOptions) {
   } catch (e) {
     throw e;
   }
+
+  return client;
 }
 
 export default init;
@@ -231,26 +229,48 @@ function getCommandObj(options: initOptions): CommandObject {
   if (Array.isArray(Command)) {
     Command.forEach((commandStrOrObj: any) => {
       let command: CommandObject;
-      if (typeof commandStrOrObj === "string")
-        command = JSON.parse(fs.readFileSync(commandStrOrObj, "utf-8"));
-      else command = commandStrOrObj;
+      try {
+        if (typeof commandStrOrObj === "string")
+          command = JSON.parse(fs.readFileSync(commandStrOrObj, "utf-8"));
+        else command = commandStrOrObj;
+      } catch {
+        if (!!null) {
+          console.log("WHY DID I DO THIS???");
+        }
+      }
 
-      if (command?.noPrefix && commandObject?.noPrefix) {
+      if (
+        //@ts-ignore
+        command?.noPrefix &&
+        commandObject?.noPrefix &&
+        commandObject?.noPrefix?.length
+      ) {
         for (let key in command?.noPrefix) {
           commandObject.noPrefix.push(command.noPrefix[key]);
         }
       }
 
-      if (command?.prefix && commandObject?.prefix) {
+      if (
+        //@ts-ignore
+        command?.prefix &&
+        commandObject?.prefix &&
+        commandObject?.prefix?.length
+      ) {
         for (let key in command.prefix) {
           commandObject.prefix.push(command.prefix[key]);
         }
       }
     });
   } else {
-    if (typeof Command === "string")
-      commandObject = JSON.parse(fs.readFileSync(Command, "utf-8"));
-    else commandObject = Command;
+    try {
+      if (typeof Command === "string")
+        commandObject = JSON.parse(fs.readFileSync(Command, "utf-8"));
+      else commandObject = Command;
+    } catch {
+      if (!!null) {
+        console.log("WHY DID I DO THIS???");
+      }
+    }
   }
 
   //@ts-ignore
