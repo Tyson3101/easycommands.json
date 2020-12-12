@@ -15,9 +15,7 @@
 ### Firstly install the package
 
 ```
-
 npm i easycommands.json
-
 ```
 
 ### Secondly import the easycommands.json module
@@ -49,11 +47,9 @@ const init = require("easycommands.json");
 ```js
 
 {
+  "prefix": [{}], // The prefix property is for inputs which need a prefix. OPTIONAL
 
-"prefix": [{}], // The prefix property is for inputs which need a prefix. OPTIONAL
-
-"noPrefix": [{}] // noPrefix property is for responding to plain message content. OPTIONAL
-
+  "noPrefix": [{}] // noPrefix property is for responding to plain message content. OPTIONAL
 }
 
 ```
@@ -63,47 +59,41 @@ const init = require("easycommands.json");
 ## JSON File example
 
 ```js
-
 {
 
 "prefix": [{
 
-"input": "rules", // Input to listen for. REQUIRED (If array, elements acts as aliases)
+  "input": "rules", // Input to listen for. REQUIRED (If array, elements acts as aliases)
 
-"output": "**1.** No being rude.\n**2.** No Ads", // Output to respond. REQUIRED (If array gets random element)
+  "output": "**1.** No being rude.\n**2.** No Ads", // Output to respond. REQUIRED (If array gets random element)
 
-"messageOptions": { // Discord MessageOptions with custom properties. OPTIONAL
+"messageOptions": { // Discord MessageOptions with custom properties. DEFUALT: {}
 
-"split": true,
+  "split": true,
 
-"respondToSelf": false, // Custom Property which tells to respond to self or not. DEFUALT: FALSE
+  "respondToSelf": false, // Custom Property which tells to respond to self or not. DEFUALT: FALSE
 
-"respondToBots": true, // Custom Property which tells to respond to other bots or not. DEFUALT: TRUE
+  "respondToBots": true, // Custom Property which tells to respond to other bots or not. DEFUALT: TRUE
 
-"respondToUsers": true, // Custom Property which tells to respond to other users. DEFUALT: TRUE
+  "respondToUsers": true, // Custom Property which tells to respond to other users. DEFUALT: TRUE
 
-"equalContent": false, // Custom Proerty which says to exacly equal input, or just include input. DEFAULT: TRUE
+  "equalContent": false, // Custom Proerty which says to exacly equal input, or just include input. DEFAULT: TRUE
 
-"embed": { "title": "Check Rules Above!" } // Embed Object https://discordjs.guide/popular-topics/embeds.html#using-an-embed-object
+  "embed": { "title": "Check Rules Above!" } // Embed Object https://discordjs.guide/popular-topics/embeds.html#using-an-embed-object
 
-},
-
+  },
 }],
 
 "noPrefix": [{
 
-"input": ["Hello!", "Hey!", "Sup", "Nice to meet you"], // Input to listen for. REQUIRED (If array, elements acts as aliases)
+  "input": ["Hello!", "Hey!", "Sup", "Nice to meet you"], // Input to listen for. REQUIRED (If array, elements acts as aliases)
 
-"output": ["Hey!", "GoodBye"], // Output to respond with. REQUIRED (If array gets random element)
+  "output": ["Hey!", "GoodBye"], // Output to respond with. REQUIRED (If array gets random element)
 
 "messageOptions": { // Discord Message Options
-
-"code": "json"
-
-},
-
+  "code": "json"
+  },
 }]
-
 }
 
 ```
@@ -161,13 +151,11 @@ client.on("message", (msg) => {
 
     commands: [
       "./pathToJSONCommandsFile.json",
-
       "./anotherPathToJSONCommandsFile.json",
     ] /* Path to JSON file(s) with commands OR JS object(s)
-
 of the shown JSON Format. REQUIRED */,
 
-    prefix: prefix ?? "!", // Prefix to check for the prefix property inputs. Defualt: "" (Empty String)
+    prefix: prefix || "!", // Prefix to check for the prefix property inputs. Defualt: "" (Empty String)
 
     reply: false, // Use message.reply if true for responding to commands. DEFAULT: FALSE
 
@@ -188,55 +176,46 @@ of the shown JSON Format. REQUIRED */,
 
 const { MessageEmbed } =  require("discord.js");
 
-
-
 const  Commands  = { // Follows same format as JSON.
 
 prefix: [{
 
-input: "rules", // Input to listen for. REQUIRED (If array, elements acts as aliases)
+  input: "rules", // Input to listen for. REQUIRED (If array, elements acts as aliases)
 
-output: "**1.** No being rude.\n**2.** No Ads", // Output to respond. REQUIRED (If array gets random element)
+  output: "**1.** No being rude.\n**2.** No Ads", // Output to respond. REQUIRED (If array gets random element)
 
 messageOptions: { // Discord MessageOptions with custom properties. OPTIONAL
 
-split: true,
+  split: true,
 
-respondToSelf: false, // Custom Property which tells to respond to self or not. DEFUALT: FALSE
+  respondToSelf: false, // Custom Property which tells to respond to self or not. DEFUALT: FALSE
 
-respondToBots: true, // Custom Property which tells to respond to other bots or not. DEFUALT: TRUE
+  respondToBots: true, // Custom Property which tells to respond to other bots or not. DEFUALT: TRUE
 
-respondToUsers: true, // Custom Property which tells to respond to other users. DEFUALT: TRUE
+  respondToUsers: true, // Custom Property which tells to respond to other users. DEFUALT: TRUE
 
-equalContent: false, // Custom Proerty which says to exacly equal input, or just include input. DEFAULT: TRUE
+  equalContent: false, // Custom Proerty which says to exacly equal input, or just include input. DEFAULT: TRUE
 
-embed: new  MessageEmbed().setTitle("Check Rules above") // Messagembed Constructor https://discordjs.guide/popular-topics/embeds.html#using-the-richembedmessageembed-constructor
+  embed: new  MessageEmbed().setTitle("Check Rules above") // Messagembed Constructor https://discordjs.guide/popular-topics/embeds.html#using-the-richembedmessageembed-constructor
 
-},
-
+  },
 }],
 
 noPrefix: [{
 
-input: ["Hello!", "Hey!", "Sup", "Nice to meet you"], // Input to listen for. REQUIRED (If array, elements acts as aliases)
+  input: ["Hello!", "Hey!", "Sup", "Nice to meet you"], // Input to listen for. REQUIRED (If array, elements acts as aliases)
 
-output: ["Hey!", "GoodBye"], // Output to respond with. REQUIRED (If array gets random element)
+  output: ["Hey!", "GoodBye"], // Output to respond with. REQUIRED (If array gets random element)
 
 messageOptions: {
-
-code: "json"
-
-},
-
+  code: "json"
+  },
 }]
-
 }
 
 // TypeScript
 
 import  init, { CommandObject } from  "easycommands.json";
-
-
 
 const  Commands: CommandObject  /* TS Interface for command */ {
 
@@ -303,11 +282,11 @@ client.on("message", (msg) => {
 
     commands: [Commands, OptionalCommands2], // Path to JSON file(s) with commands OR JS object(s) of the shown JSON Format. REQUIRED
 
-    prefix: prefix ?? "!", // Prefix to check for the prefix property inputs. Defualt: "" (Empty String)
+    prefix: prefix || "!", // Prefix to check for the prefix property inputs. Defualt: "" (Empty String)
 
     reply: false, // Use message.reply if true for responding to commands. DEFAULT: FALSE
 
-    message: msg, // Message object to access the content, etc properties. REQURIED
+    message: msg, // Message object to access the content, etc properties. REQURIED INSIDE EVENT
   }); // Returns Passed Client
 
   /* Note: init Function Adds commandsJSON property to client, value being the parsed JSON file/Object. */
@@ -324,27 +303,23 @@ client.on("message", (msg) => {
 
 init(client, {
 
-commands: ["./commands1.json". "./commands2.json", { prefix: []}, { noPrefix: []}, { prefix: [], noPrefix: []}]
+  commands: ["./commands1.json". "./commands2.json", { prefix: []}, { noPrefix: []}, { prefix: [], noPrefix: []}]
 
 });
-
-
 
 // Just File Paths to JSON
 
 init(client, {
 
-commands: ["./commands1.json". "./commands2.json"]
+  commands: ["./commands1.json". "./commands2.json"]
 
 });
-
-
 
 // Just Objects
 
 init(client, {
 
-commands: [{ prefix: []}, { noPrefix: []}, { prefix: [], noPrefix: []}]
+  commands: [{ prefix: []}, { noPrefix: []}, { prefix: [], noPrefix: []}]
 
 });
 
@@ -391,7 +366,10 @@ interface CommandObject {
 
 import init, { CommandObject } from "easycommands.json";
 
-const commands: CommandObject = {};
+const commands: CommandObject = {
+  noPrefix: [],
+  prefix: [],
+};
 ```
 
 ## Command
@@ -409,5 +387,8 @@ interface Command {
 
 import init, { Command } from "easycommands.json";
 
-const command: Command = {};
+const command: Command = {
+  input: "",
+  output: "",
+};
 ```

@@ -68,7 +68,8 @@ function init(client: Client, options: initOptions): Client {
                 if (messageOptions?.equalContent === false)
                   return message.content
                     .toLowerCase()
-                    .includes(input.toLowerCase());
+                    .trim()
+                    .includes(input.toLowerCase().trim());
                 else
                   return (
                     message.content
@@ -81,7 +82,8 @@ function init(client: Client, options: initOptions): Client {
               if (messageOptions?.equalContent === false)
                 return message.content
                   .toLowerCase()
-                  .includes(inputs.toLowerCase());
+                  .trim()
+                  .includes(inputs.toLowerCase().trim());
               else
                 return (
                   message.content.toLowerCase().slice(prefix.length).trim() ===
@@ -116,21 +118,18 @@ function init(client: Client, options: initOptions): Client {
             options.reply
               ? message.reply(
                   output[Math.floor(Math.random() * output.length)],
-                  command.messageOptions ? command.messageOptions : {}
+                  command.messageOptions ?? {}
                 )
               : message.channel.send(
                   output[Math.floor(Math.random() * output.length)],
-                  command.messageOptions ? command.messageOptions : {}
+                  command.messageOptions ?? {}
                 );
           } else {
             options.reply
-              ? message.reply(
-                  command.output,
-                  command.messageOptions ? command.messageOptions : {}
-                )
+              ? message.reply(command.output, command.messageOptions ?? {})
               : message.channel.send(
                   command.output,
-                  command.messageOptions ? command.messageOptions : {}
+                  command.messageOptions ?? {}
                 );
           }
         }
@@ -153,7 +152,8 @@ function init(client: Client, options: initOptions): Client {
             if (messageOptions?.equalContent === false)
               return message.content
                 .toLowerCase()
-                .includes(inputs.toLowerCase());
+                .trim()
+                .includes(inputs.toLowerCase().trim());
             else
               return (
                 message.content.toLowerCase().trim() ===
@@ -186,21 +186,18 @@ function init(client: Client, options: initOptions): Client {
           options.reply
             ? message.reply(
                 output[Math.floor(Math.random() * output.length)],
-                command.messageOptions ? command.messageOptions : {}
+                command.messageOptions ?? {}
               )
             : message.channel.send(
                 output[Math.floor(Math.random() * output.length)],
-                command.messageOptions ? command.messageOptions : {}
+                command.messageOptions ?? {}
               );
         } else {
           options.reply
-            ? message.reply(
-                command.output,
-                command.messageOptions ? command.messageOptions : {}
-              )
+            ? message.reply(command.output, command.messageOptions ?? {})
             : message.channel.send(
                 command.output,
-                command.messageOptions ? command.messageOptions : {}
+                command.messageOptions ?? {}
               );
         }
       }
